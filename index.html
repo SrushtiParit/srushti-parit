@@ -1,0 +1,2501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Portfolio of Srushti Sadashiv Parit - Full Stack Developer specializing in ASP.NET Core, React, Microservices, SQL Server, and Azure."
+  />
+  <title>Srushti Parit | Full Stack Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8lJQ1YQp1gChX2NDVYqoQZnQEqpllwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <style>
+    :root {
+      --bg: #081120;
+      --bg-soft: rgba(15, 23, 42, 0.76);
+      --panel: rgba(15, 23, 42, 0.9);
+      --panel-strong: #101a2e;
+      --surface: #0f172a;
+      --surface-2: #111c33;
+      --card-border: rgba(148, 163, 184, 0.14);
+      --text: #e5eefb;
+      --muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-2: #7c3aed;
+      --accent-soft: rgba(59, 130, 246, 0.16);
+      --success: #22c55e;
+      --warning: #fbbf24;
+      --danger: #ef4444;
+      --shadow: 0 20px 50px rgba(2, 8, 23, 0.45);
+      --glow: 0 0 0 1px rgba(59, 130, 246, 0.25), 0 16px 40px rgba(59, 130, 246, 0.18);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --max-width: 1200px;
+      --nav-height: 76px;
+      --transition: 220ms ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(59, 130, 246, 0.2), transparent 26%),
+        radial-gradient(circle at top right, rgba(124, 58, 237, 0.14), transparent 20%),
+        linear-gradient(180deg, #060d18 0%, #081120 45%, #050913 100%);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(59, 130, 246, 0.3);
+      color: #ffffff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 110px 0;
+      position: relative;
+    }
+
+    .section-heading {
+      margin-bottom: 56px;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.95rem;
+      border: 1px solid rgba(59, 130, 246, 0.22);
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.08);
+      color: #bfdbfe;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 1.02rem;
+      max-width: 680px;
+    }
+
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+    }
+
+    .card {
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(17, 28, 51, 0.96), rgba(12, 19, 35, 0.96));
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+    }
+
+    .card:hover,
+    .card:focus-within {
+      transform: translateY(-8px);
+      border-color: rgba(59, 130, 246, 0.3);
+      box-shadow: var(--glow);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+      transition-delay: var(--delay, 0ms);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+      background: rgba(6, 13, 24, 0.72);
+      min-height: var(--nav-height);
+    }
+
+    .nav-inner {
+      min-height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #ffffff;
+      background:
+        linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(124, 58, 237, 0.95));
+      box-shadow:
+        0 10px 28px rgba(59, 130, 246, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-weight: 500;
+      padding: 0.8rem 1rem;
+      border-radius: 999px;
+      transition:
+        color var(--transition),
+        background var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #ffffff;
+      background: rgba(59, 130, 246, 0.12);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(15, 23, 42, 0.85);
+      color: #ffffff;
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+
+    .nav-toggle:hover {
+      border-color: rgba(59, 130, 246, 0.28);
+      box-shadow: var(--glow);
+    }
+
+    .hero {
+      min-height: calc(100vh - var(--nav-height));
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto;
+      border-radius: 999px;
+      filter: blur(20px);
+      opacity: 0.5;
+      z-index: -2;
+      animation: floatOrb 14s ease-in-out infinite;
+    }
+
+    .hero::before {
+      width: 340px;
+      height: 340px;
+      top: 10%;
+      left: -6%;
+      background: rgba(59, 130, 246, 0.3);
+    }
+
+    .hero::after {
+      width: 280px;
+      height: 280px;
+      right: -4%;
+      bottom: 8%;
+      background: rgba(124, 58, 237, 0.24);
+      animation-delay: -4s;
+    }
+
+    #particles {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.9;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin: 0.35rem 0 1rem;
+    }
+
+    .hero-copy h1 span {
+      background: linear-gradient(120deg, #ffffff 10%, #93c5fd 48%, #c4b5fd 92%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .intro-line {
+      color: #bfdbfe;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .typing-wrap {
+      min-height: 3.2rem;
+      margin: 0 0 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+      color: #dbeafe;
+      font-size: clamp(1.05rem, 2vw, 1.45rem);
+      font-weight: 600;
+    }
+
+    .typing-text {
+      color: #93c5fd;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 0.7ch;
+      color: #c4b5fd;
+      animation: blink 1s step-end infinite;
+    }
+
+    .hero-copy p {
+      color: var(--muted);
+      font-size: 1.06rem;
+      max-width: 680px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      min-height: 52px;
+      padding: 0 1.35rem;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition),
+        background var(--transition);
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 16px 35px rgba(59, 130, 246, 0.26);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.34);
+    }
+
+    .btn-secondary {
+      color: #e2e8f0;
+      background: rgba(15, 23, 42, 0.78);
+      border-color: rgba(148, 163, 184, 0.18);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(59, 130, 246, 0.26);
+      box-shadow: var(--glow);
+    }
+
+    .social-list {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      color: #e2e8f0;
+      background: rgba(15, 23, 42, 0.82);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        color var(--transition),
+        border-color var(--transition);
+    }
+
+    .social-link:hover {
+      color: #ffffff;
+      transform: translateY(-4px);
+      border-color: rgba(59, 130, 246, 0.28);
+      box-shadow: var(--glow);
+    }
+
+    .hero-panel {
+      padding: 1.5rem;
+      border-radius: 32px;
+      position: relative;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      border-radius: inherit;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.015));
+      pointer-events: none;
+    }
+
+    .hero-panel-card {
+      padding: 1.5rem;
+      border-radius: 24px;
+      background: rgba(8, 17, 32, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel-card + .hero-panel-card {
+      margin-top: 1rem;
+    }
+
+    .hero-panel-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-meta {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.85rem 0.95rem;
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    .hero-meta-item span:first-child {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-meta-item strong {
+      color: #ffffff;
+      font-size: 0.95rem;
+      text-align: right;
+    }
+
+    .hero-highlights {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .mini-stat {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.82);
+      border: 1px solid rgba(148, 163, 184, 0.1);
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.3rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .mini-stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .about-profile {
+      padding: 2rem;
+      text-align: center;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .avatar {
+      width: 170px;
+      height: 170px;
+      margin: 0 auto 1.25rem;
+      border-radius: 50%;
+      display: block;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), transparent 34%),
+        linear-gradient(135deg, rgba(59, 130, 246, 0.88), rgba(124, 58, 237, 0.88));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow:
+        0 0 0 14px rgba(59, 130, 246, 0.08),
+        0 18px 48px rgba(59, 130, 246, 0.22);
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .about-profile h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .about-profile p {
+      color: var(--muted);
+    }
+
+    .about-content {
+      padding: 2rem;
+      height: 100%;
+    }
+
+    .about-content p {
+      color: #cbd5e1;
+      margin-bottom: 1.4rem;
+      font-size: 1rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.75rem;
+    }
+
+    .stat-card {
+      padding: 1.15rem;
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.84);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      text-align: center;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.35rem;
+      margin-bottom: 0.3rem;
+      color: #ffffff;
+    }
+
+    .stat-card span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 2rem;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0.4rem;
+      left: 0.45rem;
+      width: 2px;
+      height: calc(100% - 0.8rem);
+      background: linear-gradient(180deg, rgba(59, 130, 246, 0.95), rgba(124, 58, 237, 0.25));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 2rem;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      top: 2rem;
+      left: -1.87rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.12);
+    }
+
+    .timeline-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-top h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-top p {
+      color: var(--muted);
+    }
+
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .badge.current {
+      color: #dcfce7;
+      background: rgba(34, 197, 94, 0.14);
+      border: 1px solid rgba(34, 197, 94, 0.28);
+    }
+
+    .badge.live {
+      color: #dcfce7;
+      background: rgba(34, 197, 94, 0.14);
+      border: 1px solid rgba(34, 197, 94, 0.28);
+    }
+
+    .badge.wip {
+      color: #fef3c7;
+      background: rgba(251, 191, 36, 0.14);
+      border: 1px solid rgba(251, 191, 36, 0.26);
+    }
+
+    .badge.new {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 24px rgba(59, 130, 246, 0.25);
+    }
+
+    .timeline-highlights {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 1.1rem;
+    }
+
+    .timeline-highlights li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      color: #d7e4f4;
+    }
+
+    .timeline-highlights li i {
+      color: #93c5fd;
+      margin-top: 0.28rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-group {
+      padding: 1.6rem;
+    }
+
+    .skill-group h3 {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .chip-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .chip {
+      padding: 0.72rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(10, 17, 30, 0.9);
+      color: #dbeafe;
+      font-size: 0.92rem;
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .chip:hover {
+      transform: translateY(-4px);
+      border-color: rgba(59, 130, 246, 0.28);
+      box-shadow: var(--glow);
+    }
+
+    .project-subsection + .project-subsection {
+      margin-top: 3rem;
+    }
+
+    .subsection-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .subsection-title h3 {
+      font-size: 1.55rem;
+    }
+
+    .subsection-title p {
+      color: var(--muted);
+      max-width: 520px;
+      text-align: right;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.4rem;
+    }
+
+    .learning-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .project-card,
+    .article-card,
+    .cert-card,
+    .education-card,
+    .contact-card {
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::after,
+    .article-card::after,
+    .cert-card::after,
+    .education-card::after,
+    .contact-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -50px -80px auto;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent 65%);
+      pointer-events: none;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-card h4,
+    .article-card h4,
+    .cert-card h4,
+    .education-card h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .project-card p,
+    .article-card p,
+    .cert-card p,
+    .education-card p,
+    .contact-copy p {
+      color: var(--muted);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 1rem 0 1.2rem;
+    }
+
+    .tag {
+      padding: 0.42rem 0.72rem;
+      border-radius: 999px;
+      background: rgba(59, 130, 246, 0.1);
+      color: #bfdbfe;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1px solid rgba(59, 130, 246, 0.16);
+    }
+
+    .project-actions,
+    .article-actions,
+    .cert-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: auto;
+    }
+
+    .action-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #ffffff;
+      font-weight: 600;
+      transition: gap var(--transition), color var(--transition);
+    }
+
+    .link-btn:hover {
+      color: #93c5fd;
+      gap: 0.7rem;
+    }
+
+    .project-card,
+    .article-card,
+    .cert-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .education-grid,
+    .articles-grid,
+    .cert-grid,
+    .contact-grid {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .articles-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .article-card.featured-article {
+      border-color: rgba(59, 130, 246, 0.34);
+      box-shadow:
+        0 0 0 1px rgba(59, 130, 246, 0.18),
+        0 22px 56px rgba(59, 130, 246, 0.18);
+      background:
+        linear-gradient(180deg, rgba(17, 28, 51, 0.98), rgba(10, 18, 34, 0.98));
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.9rem;
+      color: #cbd5e1;
+      font-size: 0.87rem;
+    }
+
+    .article-card.coming-soon {
+      opacity: 0.68;
+      filter: grayscale(0.12);
+    }
+
+    .article-card.coming-soon:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+      background: rgba(71, 85, 105, 0.35);
+      color: #cbd5e1;
+      border-color: rgba(148, 163, 184, 0.16);
+    }
+
+    .cert-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .cert-card.completed {
+      border-color: rgba(59, 130, 246, 0.26);
+    }
+
+    .cert-card.in-progress {
+      border-color: rgba(251, 191, 36, 0.38);
+    }
+
+    .cert-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .cert-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      background: rgba(59, 130, 246, 0.12);
+      color: #bfdbfe;
+      border: 1px solid rgba(59, 130, 246, 0.16);
+      flex-shrink: 0;
+    }
+
+    .cert-platform {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 0.94rem;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.42rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .status-badge.completed {
+      color: #dbeafe;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .status-badge.progress {
+      color: #fef3c7;
+      background: rgba(251, 191, 36, 0.12);
+      border: 1px solid rgba(251, 191, 36, 0.22);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--warning);
+      box-shadow: 0 0 0 rgba(251, 191, 36, 0.5);
+      animation: pulse 1.8s infinite;
+    }
+
+    .contact-grid {
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      padding: 2rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 1rem;
+      margin: 1.6rem 0 1.8rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.1rem;
+      border-radius: 18px;
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    .contact-item .contact-symbol {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(59, 130, 246, 0.1);
+      color: #93c5fd;
+      font-size: 1.1rem;
+    }
+
+    .contact-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .contact-item strong {
+      color: #ffffff;
+      font-size: 0.98rem;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .contact-form .row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.55rem;
+    }
+
+    .field label {
+      color: #cbd5e1;
+      font-weight: 500;
+      font-size: 0.92rem;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      background: rgba(15, 23, 42, 0.88);
+      color: #ffffff;
+      border-radius: 16px;
+      padding: 0.95rem 1rem;
+      outline: none;
+      transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(59, 130, 246, 0.35);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 0.87rem;
+    }
+
+    .footer {
+      padding: 2rem 0 2.5rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.1);
+      background: rgba(6, 13, 24, 0.88);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer p {
+      color: var(--muted);
+    }
+
+    .footer-socials {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 1.2rem;
+      bottom: 1.2rem;
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.95), rgba(124, 58, 237, 0.95));
+      box-shadow: 0 18px 35px rgba(59, 130, 246, 0.2);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition:
+        opacity var(--transition),
+        visibility var(--transition),
+        transform var(--transition);
+      z-index: 999;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes floatOrb {
+      0%,
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+      50% {
+        transform: translate3d(18px, -22px, 0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.45);
+      }
+      70% {
+        box-shadow: 0 0 0 12px rgba(251, 191, 36, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(251, 191, 36, 0);
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-layout,
+      .about-grid,
+      .contact-grid,
+      .projects-grid,
+      .articles-grid,
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .learning-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .subsection-title {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .subsection-title p {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: calc(var(--nav-height) - 4px);
+        right: 1rem;
+        left: 1rem;
+        padding: 0.75rem;
+        border-radius: 24px;
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        background: rgba(6, 13, 24, 0.95);
+        box-shadow: var(--shadow);
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+      }
+
+      .hero {
+        padding: 2rem 0 4rem;
+      }
+
+      .section {
+        padding: 90px 0;
+      }
+
+      .timeline {
+        padding-left: 1.5rem;
+      }
+
+      .timeline::before {
+        left: 0.32rem;
+      }
+
+      .timeline-item::before {
+        left: -1.53rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(calc(100% - 1.2rem), var(--max-width));
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.45rem, 12vw, 3.6rem);
+      }
+
+      .hero-actions,
+      .contact-form .row,
+      .hero-highlights,
+      .learning-grid,
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-highlights {
+        display: grid;
+      }
+
+      .btn,
+      .hero-actions a {
+        width: 100%;
+      }
+
+      .social-list {
+        gap: 0.65rem;
+      }
+
+      .stat-card,
+      .mini-stat,
+      .hero-meta-item,
+      .timeline-item,
+      .project-card,
+      .article-card,
+      .cert-card,
+      .education-card,
+      .contact-card,
+      .about-profile,
+      .about-content {
+        padding: 1.25rem;
+      }
+
+      .timeline-top {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="Srushti Parit Home">
+        <span class="brand-mark">SP</span>
+        <span>Srushti Parit</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Primary Navigation">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#articles">Articles & Writing</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section" id="home">
+      <canvas id="particles" aria-hidden="true"></canvas>
+      <div class="container hero-layout">
+        <div class="hero-copy reveal">
+          <span class="intro-line">Hi, I'm</span>
+          <h1><span>Srushti Parit</span></h1>
+          <div class="typing-wrap" aria-live="polite">
+            <span>I build as a</span>
+            <span class="typing-text" id="typingText"></span>
+            <span class="cursor">|</span>
+          </div>
+          <p>
+            2.9 Years | Building scalable enterprise applications with .NET Core, React,
+            Microservices &amp; Azure
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">
+              <i class="fa-solid fa-briefcase"></i>
+              View My Work
+            </a>
+            <a class="btn btn-secondary" id="resumeDownloadBtn" href="Srushti_Parit_7875457858.pdf" download>
+              <span>📄</span>
+              Download Resume
+            </a>
+          </div>
+
+          <div class="social-list">
+            <a class="social-link" href="https://github.com/SrushtiParit" target="_blank" rel="noreferrer" aria-label="GitHub">🐙</a>
+            <a class="social-link" href="https://www.linkedin.com/in/srushtiparit/" target="_blank" rel="noreferrer" aria-label="LinkedIn">💼</a>
+            <a class="social-link" href="mailto:srushtiparit197@gmail.com" aria-label="Email">✉️</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel glass reveal" style="--delay: 120ms;">
+          <div class="hero-panel-card">
+            <h3>Professional Snapshot</h3>
+            <div class="hero-meta">
+              <div class="hero-meta-item">
+                <span>Role</span>
+                <strong>Full Stack Developer</strong>
+              </div>
+              <div class="hero-meta-item">
+                <span>Current Company</span>
+                <strong>ParentPay Group, Pune</strong>
+              </div>
+              <div class="hero-meta-item">
+                <span>Specialization</span>
+                <strong>ASP.NET Core, React, SQL Server, Azure</strong>
+              </div>
+              <div class="hero-meta-item">
+                <span>Architecture Focus</span>
+                <strong>Microservices &amp; Clean Architecture</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-panel-card">
+            <h3>Impact Areas</h3>
+            <div class="hero-highlights">
+              <div class="mini-stat">
+                <strong>95%</strong>
+                <span>Unit test coverage maintained</span>
+              </div>
+              <div class="mini-stat">
+                <strong>2.9</strong>
+                <span>Years in enterprise full stack delivery</span>
+              </div>
+              <div class="mini-stat">
+                <strong>MFE</strong>
+                <span>Micro Frontend architecture exposure</span>
+              </div>
+              <div class="mini-stat">
+                <strong>Azure</strong>
+                <span>Deployments, functions, blob workflows</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow"><i class="fa-solid fa-user"></i> About</span>
+          <h2>Full stack engineering with a strong eye for architecture and usability.</h2>
+          <p>
+            I design maintainable systems, scalable APIs, and polished frontend experiences
+            that support real-world enterprise workflows.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-profile card reveal">
+            <img class="avatar" src="Srushti.jpeg" alt="Srushti Sadashiv Parit" />
+            <h3>Srushti Sadashiv Parit</h3>
+            <p>Full Stack Developer | Pune, India</p>
+          </div>
+
+          <div class="about-content card reveal" style="--delay: 120ms;">
+            <p>
+              Full Stack Developer with 2.9 years of experience in designing and developing
+              scalable enterprise applications using ASP.NET Core, C#, SQL Server, and React
+              with Redux. Experienced in Clean Microservices Architecture, Database-First and
+              Code-First approaches using Entity Framework and LINQ.
+            </p>
+            <p>
+              Hands-on experience in Azure deployments, data migration strategies, and
+              cloud-based solutions. Skilled in Micro Frontend (MFE) architecture and frontend
+              performance optimization. I focus on clean code, performance optimization, robust
+              debugging, and maintainable architecture across both backend and frontend systems.
+            </p>
+
+            <div class="stats-grid">
+              <div class="stat-card">
+                <strong>2.9+ Yrs</strong>
+                <span>Experience</span>
+              </div>
+              <div class="stat-card">
+                <strong>Product &amp; Service</strong>
+                <span>Companies</span>
+              </div>
+              <div class="stat-card">
+                <strong>8.98</strong>
+                <span>CGPA</span>
+              </div>
+              <div class="stat-card">
+                <strong>28+</strong>
+                <span>GitHub Repos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow"><i class="fa-solid fa-briefcase"></i> Experience</span>
+          <h2>Building enterprise applications that prioritize performance, scale, and clarity.</h2>
+          <p>
+            My experience spans product and service environments, with a strong emphasis on
+            architecture, SQL performance, migration strategy, and frontend integration.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item card reveal">
+            <div class="timeline-top">
+              <div>
+                <h3>ParentPay Group, Pune</h3>
+                <p>Full Stack Consultant | August 2025 - Present</p>
+              </div>
+              <div class="badge-row">
+                <span class="badge current"><i class="fa-solid fa-circle"></i> Current</span>
+                <span class="badge">Product-Based EdTech Company</span>
+              </div>
+            </div>
+
+            <ul class="timeline-highlights">
+              <li>
+                <i class="fa-solid fa-check"></i>
+                <span>
+                  Working on the enterprise-grade Exams Module, a critical feature covering exam
+                  scheduling, student management, and results processing for schools across the UK and Europe.
+                </span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i>
+                <span>
+                  Led modularization of the most complex stored procedures into smaller reusable units,
+                  improving query performance, reducing execution time, and making debugging and maintenance easier.
+                </span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i>
+                <span>
+                  Building scalable ASP.NET Core microservices using Clean Architecture and SOLID principles,
+                  while designing secure APIs for extensibility and long-term maintainability.
+                </span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i>
+                <span>
+                  Contributing to legacy-to-next-generation migration workflows using database triggers,
+                  mapping tables, Azure Functions, and Azure Blob Storage for incremental synchronization.
+                </span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i>
+                <span>
+                  Building responsive React and Redux UI modules, performing impact analysis before implementation,
+                  and consistently maintaining around 95% unit test coverage.
+                </span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="timeline-item card reveal" style="--delay: 120ms;">
+            <div class="timeline-top">
+              <div>
+                <h3>Rheal Software, Pune</h3>
+                <p>Full Stack Developer | August 2023 - August 2025</p>
+              </div>
+              <div class="badge-row">
+                <span class="badge">Service-Based Company</span>
+              </div>
+            </div>
+
+            <ul class="timeline-highlights">
+              <li>
+                <i class="fa-solid fa-check"></i>
+                <span>
+                  Developed a Claim Management System from scratch using Angular, ASP.NET Web API
+                  with Code First approach, and SQL Server.
+                </span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i>
+                <span>
+                  Designed and normalized database structures for claims, adjusters, and
+                  authorization modules with a focus on maintainability and clear relationships.
+                </span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i>
+                <span>
+                  Worked on microservices-based architecture with separation of concerns and
+                  independently deployable services across backend modules.
+                </span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i>
+                <span>
+                  Built dynamic reusable Angular components using the Velzon UI kit and integrated
+                  them with backend APIs, validation flows, and robust error handling.
+                </span>
+              </li>
+              <li>
+                <i class="fa-solid fa-check"></i>
+                <span>
+                  Contributed to peer code reviews, clean coding standards, and performance
+                  optimization throughout the project lifecycle.
+                </span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow"><i class="fa-solid fa-layer-group"></i> Skills</span>
+          <h2>Core technologies, architecture strengths, and delivery tooling.</h2>
+          <p>
+            I work across the full stack with a strong foundation in backend systems, frontend
+            engineering, SQL optimization, cloud workflows, and performance diagnostics.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-group card reveal">
+            <h3>Backend</h3>
+            <div class="chip-wrap">
+              <span class="chip">ASP.NET Core</span>
+              <span class="chip">C#</span>
+              <span class="chip">Web API</span>
+              <span class="chip">Microservices</span>
+              <span class="chip">Clean Architecture</span>
+              <span class="chip">Entity Framework</span>
+              <span class="chip">Code First</span>
+              <span class="chip">DB First</span>
+              <span class="chip">LINQ</span>
+              <span class="chip">SOLID Principles</span>
+            </div>
+          </div>
+
+          <div class="skill-group card reveal" style="--delay: 80ms;">
+            <h3>Frontend</h3>
+            <div class="chip-wrap">
+              <span class="chip">React.js</span>
+              <span class="chip">Redux</span>
+              <span class="chip">Angular</span>
+              <span class="chip">JavaScript (ES6+)</span>
+              <span class="chip">TypeScript</span>
+              <span class="chip">Micro Frontend (MFE)</span>
+              <span class="chip">API Integration</span>
+              <span class="chip">Component Architecture</span>
+            </div>
+          </div>
+
+          <div class="skill-group card reveal" style="--delay: 120ms;">
+            <h3>Frontend Performance Tools</h3>
+            <div class="chip-wrap">
+              <span class="chip">Chrome DevTools</span>
+              <span class="chip">Lighthouse</span>
+              <span class="chip">React Developer Tools</span>
+              <span class="chip">Redux DevTools</span>
+              <span class="chip">Webpack Bundle Analyzer</span>
+              <span class="chip">Lighthouse CI</span>
+              <span class="chip">Code Splitting</span>
+              <span class="chip">Lazy Loading</span>
+              <span class="chip">Memoization</span>
+              <span class="chip">Virtual Scrolling</span>
+              <span class="chip">Debouncing</span>
+              <span class="chip">Reducing Re-renders</span>
+            </div>
+          </div>
+
+          <div class="skill-group card reveal" style="--delay: 160ms;">
+            <h3>Database</h3>
+            <div class="chip-wrap">
+              <span class="chip">SQL Server</span>
+              <span class="chip">Stored Procedures</span>
+              <span class="chip">Triggers</span>
+              <span class="chip">Query Optimization</span>
+              <span class="chip">Normalization</span>
+              <span class="chip">Migrations</span>
+              <span class="chip">SP Modularization</span>
+            </div>
+          </div>
+
+          <div class="skill-group card reveal" style="--delay: 200ms;">
+            <h3>Cloud &amp; DevOps</h3>
+            <div class="chip-wrap">
+              <span class="chip">Microsoft Azure</span>
+              <span class="chip">Azure Functions</span>
+              <span class="chip">Blob Storage</span>
+              <span class="chip">Storage Accounts</span>
+              <span class="chip">CI/CD</span>
+              <span class="chip">Deployment Pipelines</span>
+              <span class="chip">AWS EC2</span>
+              <span class="chip">AWS S3</span>
+              <span class="chip">AWS IAM</span>
+            </div>
+          </div>
+
+          <div class="skill-group card reveal" style="--delay: 240ms;">
+            <h3>Tools</h3>
+            <div class="chip-wrap">
+              <span class="chip">Git</span>
+              <span class="chip">Postman</span>
+              <span class="chip">Visual Studio</span>
+              <span class="chip">VS Code</span>
+              <span class="chip">Requirement Analysis</span>
+              <span class="chip">Impact Analysis</span>
+              <span class="chip">Unit Testing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow"><i class="fa-solid fa-diagram-project"></i> Projects</span>
+          <h2>Practical work across architecture, full stack systems, and foundational learning.</h2>
+          <p>
+            A mix of advanced hands-on repositories and concept-driven projects that show both
+            professional depth and a strong engineering foundation.
+          </p>
+        </div>
+
+        <div class="project-subsection">
+          <div class="subsection-title reveal">
+            <h3>Featured Projects</h3>
+            <p>Recent and advanced work highlighting full stack architecture, frontend systems, and backend design.</p>
+          </div>
+
+          <div class="projects-grid">
+            <article class="project-card card reveal">
+              <div class="card-top">
+                <div>
+                  <h4>.NET Clean Architecture</h4>
+                  <p>Work-in-progress enterprise-style architecture implementation.</p>
+                </div>
+                <span class="badge wip">WIP</span>
+              </div>
+              <div class="tags">
+                <span class="tag">ASP.NET Core</span>
+                <span class="tag">C#</span>
+                <span class="tag">Clean Architecture</span>
+                <span class="tag">Entity Framework</span>
+                <span class="tag">SOLID</span>
+              </div>
+              <p>
+                A work-in-progress project implementing Clean Architecture principles in .NET,
+                featuring layered separation of Domain, Application, Infrastructure, and Presentation
+                layers to reflect real-world enterprise patterns.
+              </p>
+              <div class="project-actions">
+                <span class="badge wip">In Progress</span>
+                <a class="link-btn" href="https://github.com/SrushtiParit/CleanArcitectureDemonstration-Restaurants" target="_blank" rel="noreferrer">
+                  GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card card reveal" style="--delay: 80ms;">
+              <div class="card-top">
+                <div>
+                  <h4>Tic Tac Toe Game</h4>
+                  <p>Vanilla JS game hosted on AWS S3 and fully playable online.</p>
+                </div>
+                <span class="badge live">Live</span>
+              </div>
+              <div class="tags">
+                <span class="tag">React.js</span>
+                <span class="tag">Redux</span>
+                <span class="tag">Hooks</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">AWS S3</span>
+              </div>
+              <p>
+                A fully functional Tic Tac Toe game built with React.js, redux for state management and hosted on AWS S3.
+                Features interactive gameplay with winner detection, reset functionality, and responsive design.
+                Demonstrates frontend skills and AWS hosting capabilities.
+              </p>
+              <div class="project-actions">
+                <span class="badge live">Hosted &amp; Playable</span>
+                <div class="action-group">
+                  <a class="link-btn" href="http://tic-tac-toe-srushti.s3-website.ap-south-1.amazonaws.com/" target="_blank" rel="noreferrer">
+                    Live Demo <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                  <a class="link-btn" href="https://github.com/SrushtiParit/tic-tac-toe" target="_blank" rel="noreferrer">
+                    View on GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card card reveal" style="--delay: 120ms;">
+              <div class="card-top">
+                <div>
+                  <h4>React Concepts &amp; Patterns</h4>
+                  <p>Advanced React learning and implementation references.</p>
+                </div>
+              </div>
+              <div class="tags">
+                <span class="tag">React.js</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Hooks</span>
+                <span class="tag">Redux</span>
+              </div>
+              <p>
+                A collection of repositories demonstrating core and advanced React concepts,
+                including hooks, reusable component patterns, state management, and frontend
+                performance optimization techniques.
+              </p>
+              <div class="project-actions">
+                <span class="badge">Patterns &amp; Performance</span>
+                <a class="link-btn" href="https://github.com/SrushtiParit?tab=repositories&q=&type=&language=javascript&sort=" target="_blank" rel="noreferrer">
+                  GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card card reveal" style="--delay: 160ms;">
+              <div class="card-top">
+                <div>
+                  <h4>User Management System</h4>
+                  <p>AJAX-powered CRUD experience with server-rendered .NET stack.</p>
+                </div>
+              </div>
+              <div class="tags">
+                <span class="tag">C#</span>
+                <span class="tag">ASP.NET MVC</span>
+                <span class="tag">AJAX</span>
+                <span class="tag">SQL Server</span>
+              </div>
+              <p>
+                A full-featured user management system with CRUD operations and an AJAX-driven
+                interface to provide a seamless user experience without full page reloads.
+              </p>
+              <div class="project-actions">
+                <span class="badge">Enterprise CRUD</span>
+                <a class="link-btn" href="https://github.com/SrushtiParit/UserManagementSystem" target="_blank" rel="noreferrer">
+                  GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card card reveal" style="--delay: 200ms;">
+              <div class="card-top">
+                <div>
+                  <h4>Angular CRUD Operations</h4>
+                  <p>Full stack Angular and ASP.NET Web API integration project.</p>
+                </div>
+              </div>
+              <div class="tags">
+                <span class="tag">Angular</span>
+                <span class="tag">ASP.NET Web API</span>
+                <span class="tag">SQL Server</span>
+              </div>
+              <p>
+                A robust full stack application with Angular frontend, ASP.NET Web API backend,
+                and SQL Server database demonstrating complete CRUD operations across the stack.
+              </p>
+              <div class="project-actions">
+                <span class="badge">Full Stack</span>
+                <a class="link-btn" href="https://github.com/SrushtiParit/Angular-CRUD-Operations" target="_blank" rel="noreferrer">
+                  GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="project-subsection">
+          <div class="subsection-title reveal">
+            <h3>Learning &amp; Exploration</h3>
+            <p>Foundational repositories that reflect a strong base in programming concepts and language fundamentals.</p>
+          </div>
+
+          <div class="learning-grid">
+            <article class="project-card card reveal">
+              <div class="card-top">
+                <div>
+                  <h4>OOP Concepts in C++</h4>
+                  <p>Core object-oriented programming practice.</p>
+                </div>
+              </div>
+              <div class="tags">
+                <span class="tag">C++</span>
+                <span class="tag">OOP</span>
+              </div>
+              <div class="project-actions">
+                <span class="badge">Concepts</span>
+                <a class="link-btn" href="https://github.com/SrushtiParit/OOP" target="_blank" rel="noreferrer">
+                  GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card card reveal" style="--delay: 80ms;">
+              <div class="card-top">
+                <div>
+                  <h4>Procedural Programming in C</h4>
+                  <p>Hands-on problem solving with C fundamentals.</p>
+                </div>
+              </div>
+              <div class="tags">
+                <span class="tag">C Language</span>
+                <span class="tag">Procedural Programming</span>
+              </div>
+              <div class="project-actions">
+                <span class="badge">Foundations</span>
+                <a class="link-btn" href="https://github.com/SrushtiParit/Concepts" target="_blank" rel="noreferrer">
+                  GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
+
+            <article class="project-card card reveal" style="--delay: 120ms;">
+              <div class="card-top">
+                <div>
+                  <h4>Java Programs</h4>
+                  <p>Exercises and concept implementations in Java.</p>
+                </div>
+              </div>
+              <div class="tags">
+                <span class="tag">Java</span>
+                <span class="tag">Programming Basics</span>
+              </div>
+              <div class="project-actions">
+                <span class="badge">Exploration</span>
+                <a class="link-btn" href="https://github.com/SrushtiParit/JavaCodes" target="_blank" rel="noreferrer">
+                  GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow"><i class="fa-solid fa-graduation-cap"></i> Education</span>
+          <h2>Strong academic foundation supporting modern software engineering practice.</h2>
+          <p>
+            My education established a solid base in software design, systems thinking, and
+            disciplined problem solving.
+          </p>
+        </div>
+
+        <div class="education-grid">
+          <article class="education-card card reveal">
+            <h4>Bachelor of Engineering - Information Technology</h4>
+            <p>Savitribai Phule Pune University</p>
+            <div class="tags">
+              <span class="tag">June 2019 - July 2023</span>
+              <span class="tag">CGPA 8.98</span>
+            </div>
+            <p>
+              Graduated with a strong academic record while building a foundation in software
+              engineering, programming, databases, and application development.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLES: Replace each article-card div with real data when ready -->
+    <!-- Fields to update per card: title, description, link, tags, date, read-time -->
+    <section class="section" id="articles">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow"><i class="fa-solid fa-pen-nib"></i> Articles &amp; Writing</span>
+          <h2>Sharing lessons from backend architecture, frontend performance, and practical engineering.</h2>
+          <p>
+            I write about .NET, React, Azure, Clean Architecture, and software engineering best practices.
+          </p>
+        </div>
+
+        <div class="articles-grid">
+          <article class="article-card card featured-article reveal">
+            <div class="card-top">
+              <div>
+                <h4>Why You Should Break Your Complex Stored Procedures Into Smaller Ones</h4>
+                <p>A practical guide to SP modularization and safer refactoring in enterprise systems.</p>
+              </div>
+              <span class="badge new">New ✨</span>
+            </div>
+            <div class="article-meta">
+              <span><i class="fa-regular fa-calendar"></i> April 2025</span>
+              <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+            </div>
+            <div class="tags">
+              <span class="tag">SQL Server</span>
+              <span class="tag">.NET</span>
+              <span class="tag">Clean Code</span>
+              <span class="tag">Performance</span>
+            </div>
+            <p>
+              A practical guide to SP modularization - what the problem looks like, how to approach
+              the refactor safely, and what actually improves on the other side.
+            </p>
+            <div class="article-actions">
+              <span class="badge">Published on Medium</span>
+              <a
+                class="link-btn"
+                href="https://medium.com/@paritsrushti/why-you-should-break-your-complex-stored-procedures-into-smaller-ones-35f9a2385bcf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Read on Medium <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="article-card card coming-soon reveal" style="--delay: 80ms;">
+            <div class="card-top">
+              <div>
+                <h4>Understanding Clean Architecture in .NET Core</h4>
+                <p>A practical walkthrough of layering, boundaries, and maintainability in .NET applications.</p>
+              </div>
+            </div>
+            <div class="article-meta">
+              <span><i class="fa-regular fa-clock"></i> 8 min read</span>
+            </div>
+            <div class="tags">
+              <span class="tag">.NET</span>
+              <span class="tag">Architecture</span>
+            </div>
+            <div class="article-actions">
+              <span class="badge">Coming Soon</span>
+              <span class="btn btn-secondary btn-disabled">Coming Soon</span>
+            </div>
+          </article>
+
+          <article class="article-card card coming-soon reveal" style="--delay: 120ms;">
+            <div class="card-top">
+              <div>
+                <h4>Micro Frontend Architecture: When and Why</h4>
+                <p>Trade-offs, adoption signals, and practical lessons from modular frontend systems.</p>
+              </div>
+            </div>
+            <div class="article-meta">
+              <span><i class="fa-regular fa-clock"></i> 6 min read</span>
+            </div>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">MFE</span>
+              <span class="tag">Frontend</span>
+            </div>
+            <div class="article-actions">
+              <span class="badge">Coming Soon</span>
+              <span class="btn btn-secondary btn-disabled">Coming Soon</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="certifications">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow"><i class="fa-solid fa-certificate"></i> Certifications &amp; Learning</span>
+          <h2>Continuous learning across cloud, architecture, and modern full stack development.</h2>
+          <p>
+            Continuously upskilling in cloud, architecture, and modern development practices.
+          </p>
+        </div>
+
+        <!-- CERTIFICATIONS: Add new cert cards here -->
+        <!-- Fields per card: title, platform, status, certificate-link -->
+        <div class="cert-grid">
+          <article class="cert-card card completed reveal">
+            <div class="cert-head">
+              <div class="cert-icon">☁️</div>
+              <span class="status-badge completed">Completed ✅</span>
+            </div>
+            <h4>AWS Certified Cloud Practitioner (CLF-C02)</h4>
+            <p class="cert-platform">Amazon Web Services (AWS) / Udemy</p>
+            <div class="cert-actions">
+              <span class="badge">Cloud Foundations</span>
+              <a class="link-btn" href="Srushti_AWSudemy.pdf" target="_blank" rel="noreferrer">
+                View Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+          </article>
+
+          <article class="cert-card card in-progress reveal" style="--delay: 80ms;">
+            <div class="cert-head">
+              <div class="cert-icon">🔷</div>
+              <span class="status-badge progress"><span class="pulse-dot"></span> In Progress 🔄</span>
+            </div>
+            <h4>Microsoft Azure Fundamentals (AZ-900)</h4>
+            <p class="cert-platform">Microsoft / Udemy</p>
+            <div class="cert-actions">
+              <span class="badge wip">Currently Learning</span>
+              <!--<span class="btn btn-secondary btn-disabled">View Certificate</span>-->
+            </div>
+          </article>
+
+          <article class="cert-card card completed reveal" style="--delay: 120ms;">
+            <div class="cert-head">
+              <div class="cert-icon">💻</div>
+              <span class="status-badge completed">Completed ✅</span>
+            </div>
+            <h4>The Complete ASP.NET Core &amp; Entity Framework</h4>
+            <p class="cert-platform">Udemy</p>
+            <div class="cert-actions">
+              <span class="badge">Backend</span>
+              <!--<span class="btn btn-secondary btn-disabled">View Certificate</span>-->
+            </div>
+          </article>
+
+          <article class="cert-card card completed reveal" style="--delay: 160ms;">
+            <div class="cert-head">
+              <div class="cert-icon">⚛️</div>
+              <span class="status-badge completed">Completed ✅</span>
+            </div>
+            <h4>React - The Complete Guide (Redux, Hooks, Router)</h4>
+            <p class="cert-platform">Udemy</p>
+            <div class="cert-actions">
+              <span class="badge">Frontend</span>
+              <!--<span class="btn btn-secondary btn-disabled">View Certificate</span>-->
+            </div>
+          </article>
+
+          <article class="cert-card card completed reveal" style="--delay: 200ms;">
+            <div class="cert-head">
+              <div class="cert-icon">🅰️</div>
+              <span class="status-badge completed">Completed ✅</span>
+            </div>
+            <h4>Angular - The Complete Guide</h4>
+            <p class="cert-platform">Udemy</p>
+            <div class="cert-actions">
+              <span class="badge">Frontend</span>
+              <!--<span class="btn btn-secondary btn-disabled">View Certificate</span>-->
+            </div>
+          </article>
+
+          <article class="cert-card card completed reveal" style="--delay: 240ms;">
+            <div class="cert-head">
+              <div class="cert-icon">🏛️</div>
+              <span class="status-badge completed">Completed ✅</span>
+            </div>
+            <h4>Clean Architecture &amp; SOLID Principles in C#</h4>
+            <p class="cert-platform">Udemy</p>
+            <div class="cert-actions">
+              <span class="badge">Architecture</span>
+              <!--<span class="btn btn-secondary btn-disabled">View Certificate</span>-->
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow"><i class="fa-solid fa-paper-plane"></i> Contact</span>
+          <h2>Let's Connect</h2>
+          <p>Open to new opportunities, collaborations, and conversations.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-card card reveal">
+            <div class="contact-copy">
+              <h3>Reach out directly</h3>
+              <p>
+                Whether it's a full-time role, a collaboration, or a conversation about software
+                architecture and frontend engineering, I'd love to connect.
+              </p>
+            </div>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <span class="contact-symbol">✉️</span>
+                <div>
+                  <span>Email</span>
+                  <strong>srushtiparit197@gmail.com</strong>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="contact-symbol">📞</span>
+                <div>
+                  <span>Phone</span>
+                  <strong>+91 7875457858</strong>
+                </div>
+              </div>
+              <div class="contact-item">
+                <span class="contact-symbol">📍</span>
+                <div>
+                  <span>Location</span>
+                  <strong>Pune, India</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="social-list">
+              <a class="social-link" href="https://github.com/SrushtiParit" target="_blank" rel="noreferrer" aria-label="GitHub">🐙</a>
+              <a class="social-link" href="https://www.linkedin.com/in/srushtiparit/" target="_blank" rel="noreferrer" aria-label="LinkedIn">💼</a>
+            </div>
+          </div>
+
+          <div class="contact-card card reveal" style="--delay: 100ms;">
+            <form class="contact-form" action="https://formspree.io/f/mqewlkby" method="POST">
+              <input type="hidden" name="_subject" value="New Portfolio Contact Message" />
+              <div class="row">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input id="name" name="name" type="text" placeholder="Your name" />
+                </div>
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="your@email.com" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="7" placeholder="Tell me a little about your opportunity or idea..."></textarea>
+              </div>
+
+              <button class="btn btn-primary" type="submit">
+                <i class="fa-solid fa-paper-plane"></i>
+                Send
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Designed &amp; Built by Srushti Parit</strong>
+        <p>&copy; 2025 Srushti Parit. All rights reserved.</p>
+      </div>
+      <div class="footer-socials">
+        <a class="social-link" href="https://github.com/SrushtiParit" target="_blank" rel="noreferrer" aria-label="GitHub">🐙</a>
+        <a class="social-link" href="https://www.linkedin.com/in/srushtiparit/" target="_blank" rel="noreferrer" aria-label="LinkedIn">💼</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script>
+    const navToggle = document.getElementById("navToggle");
+    const navLinks = document.getElementById("navLinks");
+    const backToTop = document.getElementById("backToTop");
+    const typingText = document.getElementById("typingText");
+    const sections = document.querySelectorAll("main section[id]");
+    const navAnchors = document.querySelectorAll(".nav-links a");
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const roles = [
+      "Full Stack Developer",
+      "ASP.NET Core Specialist",
+      "React & Redux Developer",
+      "Micro Frontend Architect",
+      "Azure Cloud Enthusiast",
+      "Clean Architecture Advocate"
+    ];
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeRoles() {
+      const current = roles[roleIndex];
+      if (!deleting) {
+        typingText.textContent = current.slice(0, charIndex + 1);
+        charIndex += 1;
+        if (charIndex === current.length) {
+          deleting = true;
+          setTimeout(typeRoles, 1400);
+          return;
+        }
+      } else {
+        typingText.textContent = current.slice(0, charIndex - 1);
+        charIndex -= 1;
+        if (charIndex === 0) {
+          deleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+      }
+      setTimeout(typeRoles, deleting ? 40 : 85);
+    }
+
+    typeRoles();
+
+    navToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+      navToggle.textContent = isOpen ? "✕" : "☰";
+    });
+
+    navAnchors.forEach((anchor) => {
+      anchor.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.textContent = "☰";
+      });
+    });
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.16,
+        rootMargin: "0px 0px -40px 0px"
+      }
+    );
+
+    revealElements.forEach((element) => revealObserver.observe(element));
+
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
+            navAnchors.forEach((anchor) => {
+              anchor.classList.toggle("active", anchor.getAttribute("href") === `#${id}`);
+            });
+          }
+        });
+      },
+      {
+        threshold: 0.55,
+        rootMargin: "-20% 0px -35% 0px"
+      }
+    );
+
+    sections.forEach((section) => sectionObserver.observe(section));
+
+    window.addEventListener("scroll", () => {
+      backToTop.classList.toggle("show", window.scrollY > 600);
+    });
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    const resumeDownloadBtn = document.getElementById("resumeDownloadBtn");
+    resumeDownloadBtn.addEventListener("click", async (event) => {
+      event.preventDefault();
+      const fileUrl = resumeDownloadBtn.getAttribute("href");
+      const fileName = "Srushti_Parit_7875457858.pdf";
+
+      try {
+        const response = await fetch(fileUrl, { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error("Resume fetch failed");
+        }
+
+        const fileBlob = await response.blob();
+        const blobUrl = URL.createObjectURL(fileBlob);
+        const tempLink = document.createElement("a");
+        tempLink.href = blobUrl;
+        tempLink.download = fileName;
+        document.body.appendChild(tempLink);
+        tempLink.click();
+        tempLink.remove();
+        URL.revokeObjectURL(blobUrl);
+      } catch (error) {
+        window.open(fileUrl, "_blank", "noopener,noreferrer");
+      }
+    });
+
+    const contactForm = document.querySelector(".contact-form");
+    contactForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const button = contactForm.querySelector("button");
+      const originalText = button.innerHTML;
+      button.disabled = true;
+      button.innerHTML = "<span>⏳</span> Sending...";
+
+      try {
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json"
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error("Form submission failed");
+        }
+
+        button.innerHTML = "<span>✅</span> Message Sent";
+        contactForm.reset();
+      } catch (error) {
+        button.innerHTML = "<span>⚠️</span> Try Again";
+        alert("Unable to send message right now. Please try again in a moment.");
+      } finally {
+        setTimeout(() => {
+          button.disabled = false;
+          button.innerHTML = originalText;
+        }, 2000);
+      }
+    });
+
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    let animationFrameId;
+
+    function resizeCanvas() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = canvas.offsetWidth * dpr;
+      canvas.height = canvas.offsetHeight * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      createParticles();
+    }
+
+    function createParticles() {
+      const particleCount = window.innerWidth < 768 ? 32 : 58;
+      particles = Array.from({ length: particleCount }, () => ({
+        x: Math.random() * canvas.offsetWidth,
+        y: Math.random() * canvas.offsetHeight,
+        radius: Math.random() * 2.2 + 0.8,
+        speedX: (Math.random() - 0.5) * 0.45,
+        speedY: (Math.random() - 0.5) * 0.45,
+        alpha: Math.random() * 0.45 + 0.15
+      }));
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+
+      for (let i = 0; i < particles.length; i += 1) {
+        const p = particles[i];
+        p.x += p.speedX;
+        p.y += p.speedY;
+
+        if (p.x < 0 || p.x > canvas.offsetWidth) p.speedX *= -1;
+        if (p.y < 0 || p.y > canvas.offsetHeight) p.speedY *= -1;
+
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(147, 197, 253, ${p.alpha})`;
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j += 1) {
+          const other = particles[j];
+          const dx = p.x - other.x;
+          const dy = p.y - other.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 120) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(124, 58, 237, ${0.11 - distance / 1200})`;
+            ctx.lineWidth = 1;
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(other.x, other.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(drawParticles);
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+    drawParticles();
+
+    window.addEventListener("beforeunload", () => {
+      cancelAnimationFrame(animationFrameId);
+    });
+  </script>
+</body>
+</html>
